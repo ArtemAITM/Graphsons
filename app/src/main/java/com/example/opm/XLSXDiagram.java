@@ -34,7 +34,6 @@ public class XLSXDiagram extends AppCompatActivity {
     private static int X0;
     private static int Y0;
     private static int X1;
-    ArrayList<String> symbols = new ArrayList<>();
     private static int Y1;
     private ActivityXlsxdiagramBinding binding;
     public static final ArrayList<BarEntry> BAR_ENTRIES = new ArrayList<>();
