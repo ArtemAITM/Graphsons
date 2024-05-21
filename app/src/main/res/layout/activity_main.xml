@@ -10,8 +10,12 @@
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.github.mikephil.charting.charts.LineChart>
 
     <ImageButton
         android:id="@+id/openKeyboard"
@@ -22,599 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/blue"
         app:srcCompat="@drawable/strelka_vverx" />
-
-    <LinearLayout
-        android:id="@+id/WORKBoard"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="vertical"
-        android:padding="2dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/openKeyboard"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <EditText
-            android:id="@+id/inputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your input" />
-
-        <android.widget.Button
-            android:id="@+id/submitButton"
-            style="@style/some_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="false"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/rectangle_mini"
-            android:backgroundTint="@null"
-            android:fontFamily="@font/semi_bold"
-            android:text="Добавить"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ListView
-            android:id="@+id/resultListView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/darker_gray"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="4dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonX"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" x " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonLeftBracket"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" ( " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonABS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="|a|" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" A " />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="3.5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonY"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" y " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonRightBracket"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" ) " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonSQRT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" √ " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" B " />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="3.5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonpowA2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="a² " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonLess"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/less" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonLessSame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/lessSame" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" C " />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="10dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonpowAB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="aᵇ " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonMore"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/more" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonMoreSame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/moreSame" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" D " />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="4dp">
-
-                    <android.widget.Button
-                        android:id="@+id/button7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 7 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 4 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 1 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 0 " />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="3.5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/button8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 8 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 5 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 2 " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonDROB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" . " />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="3.5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/button9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 9 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 6 " />
-
-                    <android.widget.Button
-                        android:id="@+id/button3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" 3 " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonRAVNO"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" = " />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="10dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonDIVIDE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" ÷ " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonMULTIPLY"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" × " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonMINUS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" - " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonPLUS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" + " />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonSIN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="sin" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonCOS"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="cos" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonTG"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="tg " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonCTG"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="ctg" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="5dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonLeftMOVE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/left" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonRightMOVE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="@string/right" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonDeleteSymbol"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" ⌦ " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonCOMPLETE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="4dp"
-                        android:text="ent" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="0dp">
-
-                    <android.widget.Button
-                        android:id="@+id/buttonpowSettings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="set" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonHOME"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="hom" />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonSQRTN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text="ᵇ√ " />
-
-                    <android.widget.Button
-                        android:id="@+id/buttonE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue"
-                        android:minWidth="1dp"
-                        android:minHeight="1dp"
-                        android:padding="5dp"
-                        android:text=" E " />
-
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
 
 
     <android.widget.Button
@@ -628,11 +39,72 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/rectangle_mini"
         android:backgroundTint="@null"
-        android:elevation="4dp"
+        android:elevation="0dp"
         android:fontFamily="@font/semi_bold"
-        android:rotation="-2"
+        android:rotation="-0.5"
         android:text="Отрисовать всё"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/functions"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="11dp"
+        android:background="#C5C5C5"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/openKeyboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/inputEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Введите функцию"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.widget.Button
+            android:id="@+id/Add"
+            style="@style/some_id"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="88dp"
+            android:background="#D0E6EB"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/semi_bold"
+            android:rotation="0"
+            android:text="Добавить"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="407dp"
+            android:layout_height="109dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageButton
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/settings2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,9 @@ public class HomePage extends AppCompatActivity {
         binding.MenuButton3.setOnClickListener(v -> {
             startActivity(new Intent(this, PieCharts.class));
         });
+        binding.MenuButton4.setOnClickListener(v -> {
+            startActivity(new Intent(this, UgadaiGraphic.class));
+        });
     }
 
     private void addVisit() { //добавляет время входа в приложение в Firebase

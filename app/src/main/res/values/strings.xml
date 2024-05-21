@@ -7,16 +7,19 @@
     <string name="abs">|a|</string>
     <string name="sqrt"> √ </string>
     <string name="lessSame"> ≤ </string>
+    <string name="share_image">Share Image</string>
     <string name="moreSame"> ≥ </string>
     <string name="left"><![CDATA[<--]]></string>
     <string name="right"><![CDATA[-->]]></string>
     <string name="enter_your_function">Enter your function</string>
     <string name="cntrX">Центр графика по X:</string>
     <string name="cntrY">Центр графика по Y:</string>
-    <string name="save">Сохранить</string>
+    <string name="save">Сохранить график</string>
     <string name="xlsx_xls">Выберите XLSX или XLS файл</string>
     <string name="FirstButton">Построение диаграмм из файлов</string>
     <string name="SecondButton">Построение математических функций</string>
     <string name="ThirdButton">Простые диаграммы</string>
     <string name="add">Add</string>
+    <string name="share">Поделиться</string>
+    <string name="rint">Печать</string>
 </resources>

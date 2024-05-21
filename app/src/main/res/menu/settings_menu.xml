@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_settings"
-        android:title="Настройки" />
-    <group android:id="@+id/group_general" android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_item1"
-            android:title="Настройка 1"
-            />
-        <item
-            android:id="@+id/menu_item2"
-            android:title="Настройка 2"
-            />
-    </group>
-    <group android:id="@+id/group_divider">
-        <item
-            android:id="@+id/Center_X"
-            android:title="@string/cntrX" />
-        <item
-            android:id="@+id/Center_Y"
-            android:title="@string/cntrY" />
-    </group>
 
     <group android:id="@+id/group_others">
         <item
             android:id="@+id/save"
             android:title="@string/save"
+            />
+        <item
+            android:id="@+id/share"
+            android:title="@string/share"
+            />
+        <item
+            android:id="@+id/print"
+            android:title="@string/rint"
             />
     </group>
 </menu>

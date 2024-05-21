@@ -2,6 +2,8 @@ package com.example.opm;
 
 import static com.github.mikephil.charting.components.YAxis.AxisDependency.LEFT;
 
+import android.graphics.Color;
+
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -33,10 +35,11 @@ public class BuildMathFunction {
         for (String function : functions) {
             List<Entry> entries = calculateFunctionPoints(function);
             LineDataSet dataSet = new LineDataSet(entries, function);
+            dataSet.setColor(Color.BLACK);
             dataSets.add(dataSet);
         }
-
         LineData lineData = new LineData(dataSets);
+        chart.setDrawingCacheEnabled(true);
         chart.setData(lineData);
         chart.setVisibleXRangeMinimum(0);
         chart.setVisibleXRangeMaximum(8F);
