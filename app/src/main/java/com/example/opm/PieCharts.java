@@ -53,6 +53,9 @@ public class PieCharts extends AppCompatActivity {
             binding.pieChart.setData(data);
             binding.pieChart.invalidate();
         });
+        binding.SettingsPie.setOnClickListener(v -> {
+            new SettingsMenu().showMenu(this, v, binding.pieChart);
+        });
     }
 
     @NonNull

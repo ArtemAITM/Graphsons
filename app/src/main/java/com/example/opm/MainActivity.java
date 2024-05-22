@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +26,7 @@ import com.example.opm.databinding.ActivityMainBinding;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,13 +59,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        binding.settings.setOnClickListener(this::showSettingsMenu);
+        binding.settings.setOnClickListener(v -> {
+            new SettingsMenu().showMenu(this, v, binding.chart);
+        });
         binding.Add.setOnClickListener(v -> {
             String text = binding.inputEditText.getText().toString();
             if (!text.isEmpty()){
                 items.add(text);
                 adapter.notifyDataSetChanged();
             }
+            binding.inputEditText.setText("");
         });
         binding.drawAll.setOnClickListener(v -> {
             BuildMathFunction buildMathFunction = new BuildMathFunction(binding.chart);
@@ -91,73 +97,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-    public void showSettingsMenu(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.getMenuInflater().inflate(R.menu.settings_menu, popupMenu.getMenu());
-
-        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                FileOutputStream out;
-                if (item.getItemId() == R.id.save) {
-                    Bitmap bitmap = Bitmap.createBitmap(binding.chart.getWidth()
-                            , binding.chart.getHeight(), Bitmap.Config.ARGB_4444);
-                    Canvas canvas = new Canvas(bitmap);
-                    canvas.drawColor(Color.TRANSPARENT);
-                    binding.chart.draw(canvas);
-                    File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                    String name = String.valueOf(new Date().getTime());
-                    File file = new File(folder, name + ".png");
-                    return true;
-                } else if (item.getItemId() == R.id.share) {
-                    share(binding.chart);
-                }else if(item.getItemId() == R.id.print){
-                    Bitmap bitmap = Bitmap.createBitmap(binding.chart.getWidth()
-                            , binding.chart.getHeight(), Bitmap.Config.ARGB_4444);
-                    Canvas canvas = new Canvas(bitmap);
-                    canvas.drawColor(Color.TRANSPARENT);
-                    binding.chart.draw(canvas);
-                    File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                    String name = String.valueOf(new Date().getTime());
-                    File file = new File(folder, name + ".png");
-                    try {
-                        out = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-                        out.flush();
-                        out.close();
-                        PrintHelper.PrintHelper(MainActivity.this, bitmap);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    file.delete();
-                }
-                return false;
-            }
-        });
-
-        popupMenu.show();
-    }
-    public void share(View graphView) {
-
-        Bitmap bitmap = Bitmap.createBitmap(graphView.getWidth(), graphView.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(Color.WHITE);
-        graphView.draw(canvas);
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
-        Uri imageUri = Uri.parse(MediaStore.Images.Media.insertImage(
-                getContentResolver(),
-                bitmap,
-                "graph_screenshot.png",
-                null
-        ));
-        String text = "Изображение от одного из наших продуктов - присоединяйся к нам: ";
-        String link = "https://graphsons.webflow.io/";
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("image/png");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, text + link);
-        startActivity(Intent.createChooser(shareIntent, "Поделиться графиком"));
     }
 }

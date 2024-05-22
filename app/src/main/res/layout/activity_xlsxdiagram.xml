@@ -19,7 +19,7 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settinsxlsx">
+        app:layout_constraintTop_toBottomOf="@+id/configXlsx">
 
         <TextView
             android:id="@+id/textView1"
@@ -88,20 +88,21 @@
         android:id="@+id/ShowFilename"
         android:layout_width="199dp"
         android:layout_height="40dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="672dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="      "/>
+        android:layout_marginEnd="62dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart"
-        android:layout_width="395dp"
-        android:layout_height="555dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="75dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,24 +111,35 @@
     </com.github.mikephil.charting.charts.PieChart>
 
     <ImageButton
-        android:id="@+id/settinsxlsx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/configXlsx"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/settings2"
+        android:background="@drawable/config"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/AddFILE"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="680dp"
-        android:layout_marginEnd="360dp"
-        android:background="@drawable/send"
-        android:id="@+id/AddFILE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/settingsXLSX"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/settings" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

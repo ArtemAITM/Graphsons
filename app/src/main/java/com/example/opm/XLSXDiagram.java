@@ -56,7 +56,10 @@ public class XLSXDiagram extends AppCompatActivity {
             startActivityForResult(intent, PICK_FILE_REQUEST_CODE);
 
         });
-        binding.settinsxlsx.setOnClickListener(v -> {
+        binding.settingsXLSX.setOnClickListener(v -> {
+            new SettingsMenu().showMenu(this, v, binding.pieChart);
+        });
+        binding.configXlsx.setOnClickListener(v -> {
             binding.pieChart.setVisibility(View.GONE);
             binding.barChart.setVisibility(View.GONE);
             binding.SettingsXlsx.setVisibility(View.VISIBLE);
@@ -112,8 +115,14 @@ public class XLSXDiagram extends AppCompatActivity {
                         String key = getCellValue(cellKey);
                         Cell cellValue = row.getCell(1);
                         String value = getCellValue(cellValue);
-                        keys.add(key);
-                        values.add(value);
+                        if (keys.contains(key)){
+                            int id = keys.indexOf(key);
+                            String newValue = String.valueOf(Float.parseFloat(value) + Float.parseFloat(values.get(id)));
+                            values.set(id, newValue);
+                        }else{
+                            keys.add(key);
+                            values.add(value);
+                        }
                     }
                 }
                 for (int i = 0; i < keys.size(); i++) {

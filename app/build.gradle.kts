@@ -32,6 +32,7 @@ buildFeatures{
 }
 
 dependencies {
+    implementation("com.opencsv:opencsv:5.3")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0")) 
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
@@ -40,7 +41,7 @@ dependencies {
     implementation("org.apache.commons:commons-math3:3.6.1")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.mlkit:vision-common:17.3.0")
     implementation("com.google.android.gms:play-services-mlkit-text-recognition-common:19.0.0")

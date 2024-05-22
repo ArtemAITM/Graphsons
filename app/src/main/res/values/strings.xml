@@ -22,4 +22,5 @@
     <string name="add">Add</string>
     <string name="share">Поделиться</string>
     <string name="rint">Печать</string>
+    <string name="select_csv_file">Select CSV File</string>
 </resources>
