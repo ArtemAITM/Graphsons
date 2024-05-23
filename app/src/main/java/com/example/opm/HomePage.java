@@ -1,8 +1,12 @@
 package com.example.opm;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +14,10 @@ import com.example.opm.databinding.ActivityHomePageBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -46,6 +54,9 @@ public class HomePage extends AppCompatActivity {
         binding.MenuButton5.setOnClickListener(v -> {
             startActivity(new Intent(this, CSVDiagram.class));
         });
+        binding.MenuButton6.setOnClickListener(v -> {
+            startActivity(new Intent(this, BarCharts.class));
+        });
         binding.phone.setOnClickListener(v -> {
             makeCall();
         });
@@ -55,7 +66,13 @@ public class HomePage extends AppCompatActivity {
         binding.tg.setOnClickListener(v -> {
             openSite(TG);
         });
+        binding.info.setOnClickListener(v -> {
+            ShowInfo();
+        });
     }
+
+
+
     private void openSite(String url) {
         Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(webIntent);
@@ -83,5 +100,16 @@ public class HomePage extends AppCompatActivity {
         assert visitId != null;
         System.out.println(date.getHours());
         visitsRef.child(visitId).setValue(visitData);
+    }
+    private void ShowInfo(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Информация о проекте");
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.info_alert, null);
+        builder.setView(dialogView);
+        builder.setPositiveButton("Закрыть", (dialog, which) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 }

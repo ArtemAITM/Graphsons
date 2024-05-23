@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-    tools:ignore="ScopedStorage" />
+
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission
         android:name="android.permission.PRINT"
         tools:ignore="SystemPermissionTypo" />
@@ -26,6 +28,12 @@
         android:theme="@style/Theme.OPM"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ScatterChart"
+            android:exported="false" />
+        <activity
+            android:name=".BarCharts"
+            android:exported="false" />
         <activity
             android:name=".CSVDiagram"
             android:exported="false" />
