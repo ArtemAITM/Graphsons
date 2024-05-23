@@ -82,7 +82,8 @@
         android:elevation="4dp"
         android:fontFamily="@font/semi_bold"
         android:rotation="-4"
-        android:text="Построение диаграмм из .csv файлов"
+        android:text="Построение столбчатых диаграмм вручную"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +100,7 @@
         android:elevation="4dp"
         android:fontFamily="@font/semi_bold"
         android:rotation="-4"
-        android:text="Построение столбчатых диаграмм вручную"
+        android:text="Построение Radar графиков"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -117,30 +118,12 @@
         android:elevation="4dp"
         android:fontFamily="@font/semi_bold"
         android:rotation="-4"
-        android:text="Построение Radar графиков"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton5" />
-
-    <android.widget.Button
-        android:id="@+id/MenuButton7"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
         android:text="Построение Bubble графиков(beta)"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton6" />
+        app:layout_constraintTop_toBottomOf="@+id/MenuButton5" />
 
     <ImageButton
         android:id="@+id/info"

@@ -49,15 +49,12 @@ public class HomePage extends AppCompatActivity {
             startActivity(new Intent(this, PieCharts.class));
         });
         binding.MenuButton4.setOnClickListener(v -> {
-            startActivity(new Intent(this, CSVDiagram.class));
-        });
-        binding.MenuButton5.setOnClickListener(v -> {
             startActivity(new Intent(this, BarCharts.class));
         });
-        binding.MenuButton6.setOnClickListener(v -> {
+        binding.MenuButton5.setOnClickListener(v -> {
             startActivity(new Intent(this, RadarGraphActivity.class));
         });
-        binding.MenuButton7.setOnClickListener(v -> {
+        binding.MenuButton6.setOnClickListener(v -> {
             startActivity(new Intent(this, BubbleCharts.class));
         });
         binding.phone.setOnClickListener(v -> {

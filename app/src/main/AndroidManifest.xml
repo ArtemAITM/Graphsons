@@ -34,19 +34,6 @@
         <activity
             android:name=".RadarGraphActivity"
             android:exported="false" />
-        <activity
-            android:name=".ScatterChart"
-            android:exported="false" />
-        <activity
-            android:name=".BarCharts"
-            android:exported="false" />
-        <activity
-            android:name=".CSVDiagram"
-            android:exported="false" />
-        <activity
-            android:name=".UgadaiGraphic"
-            android:exported="false" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.opm.fileprovider"
@@ -66,6 +53,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity android:name=".BarCharts"
+            android:exported="false"/>
         <activity
             android:name=".HomePage"
             android:exported="true">

@@ -5,10 +5,12 @@ import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_FORMULA;
 import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_NUMERIC;
 import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -50,6 +52,9 @@ public class RadarGraphActivity extends AppCompatActivity {
 
         binding.buildGraphButton.setOnClickListener(v -> {
             buildRadarGraph();
+        });
+        binding.INFO.setOnClickListener(v -> {
+            ShowInfo();
         });
         binding.FileDrawing.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -152,5 +157,15 @@ public class RadarGraphActivity extends AppCompatActivity {
         binding.radarGraphView.setData(data);
         binding.radarGraphView.getDescription().setEnabled(false);
         binding.radarGraphView.invalidate();
+    }
+    private void ShowInfo(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Информация о проекте");
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.info_radar, null);
+        builder.setView(dialogView);
+        builder.setPositiveButton("Закрыть", (dialog, which) -> dialog.dismiss());
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

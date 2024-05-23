@@ -37,8 +37,8 @@ public class BarCharts extends AppCompatActivity {
         binding.listView.setAdapter(adapter);
         binding.add.setOnClickListener(v ->{
             if(!binding.value.getText().toString().isEmpty() && !binding.key.getText().toString().isEmpty()) {
-                String textValue = binding.value.getText().toString();
-                String Key = binding.key.getText().toString();
+                String Key = binding.value.getText().toString();
+                String textValue = binding.key.getText().toString();
                 valuesVisible.add(Key + ": " + textValue);
                 keys.add(Integer.valueOf(Key));
                 values.add(Integer.valueOf(textValue));
