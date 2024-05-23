@@ -1,14 +1,23 @@
 package com.example.opm;
 
+import static com.example.opm.XLSXDiagram.PIE_ENTRIES;
+
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.opm.databinding.ActivityCsvdiagramBinding;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.MPPointF;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +33,7 @@ public class CSVDiagram extends AppCompatActivity {
     private ActivityCsvdiagramBinding binding;
     private ArrayList<Float> values = new ArrayList<>();
     private ArrayList<String> keys = new ArrayList<>();
+    private ArrayList<PieEntry> entries = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +61,40 @@ public class CSVDiagram extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_PICK_FILE && resultCode == RESULT_OK && data != null) {
             Uri fileUri = data.getData();
             try {
-                String fileContent = readCsvFile(fileUri);
-                TextView textViewContent = findViewById(R.id.textViewContent);
-                textViewContent.setText(fileContent);
+                readCsvFile(fileUri);
             } catch (IOException e) {
-                Toast.makeText(this, "Error reading file: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                throw new RuntimeException(e);
             }
+            drawPieDiagram();
         }
     }
 
-    private String readCsvFile(Uri fileUri) throws IOException {
+    private void drawPieDiagram(){
+        for (int i = 0; i < XLSXDiagram.values.size(); i++) {
+            entries.add(new PieEntry(Float.parseFloat(XLSXDiagram.values.get(i)), XLSXDiagram.keys.get(i)));
+        }
+        PieDataSet dataSet = getPieDataSet();
+        PieData data = new PieData(dataSet);
+        data.setValueTextSize(10f);
+        data.setValueTextColor(Color.BLACK);
+        binding.CSVChart.setHoleRadius(40);
+        binding.CSVChart.setData(data);
+        binding.CSVChart.invalidate();
+    }
+    @NonNull
+    private PieDataSet getPieDataSet() {
+        PieDataSet dataSet = new PieDataSet(entries, null);
+        dataSet.setSliceSpace(1f);
+        dataSet.setIconsOffset(new MPPointF(0, 10));
+        dataSet.setSelectionShift(6f);
+        dataSet.setValueLinePart1OffsetPercentage(100f);
+        dataSet.setValueLinePart1Length(0.6f);
+        dataSet.setValueLinePart2Length(0.6f);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        return dataSet;
+    }
+
+    private void readCsvFile(Uri fileUri) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
 
         try (InputStream inputStream = getContentResolver().openInputStream(fileUri)) {
@@ -69,19 +103,25 @@ public class CSVDiagram extends AppCompatActivity {
                 try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream, encoding);
                      BufferedReader reader = new BufferedReader(inputStreamReader)) {
                     String line;
+                    int i = 0;
                     while ((line = reader.readLine()) != null) {
                         String[] parts = line.split(";");
                         String key = parts[0];
-                        String value = parts[1];
-                        if (keys.contains(key))
-                            stringBuilder.append(line).append("\n");
+                        float value = Float.parseFloat(parts[1]);
+                        if (keys.contains(key)){
+                            values.set(i, value + values.get(i));
+                        }
+                        else{
+                            values.add(value);
+                            keys.add(key);
+                        }
+                        i++;
                     }
-                    return stringBuilder.toString();
                 } catch (UnsupportedEncodingException ignored) {
                 }
             }
         }
 
-        return stringBuilder.toString();
+        stringBuilder.toString();
     }
 }

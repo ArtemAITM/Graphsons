@@ -29,6 +29,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".BubbleCharts"
+            android:exported="false" />
+        <activity
+            android:name=".RadarGraphActivity"
+            android:exported="false" />
+        <activity
             android:name=".ScatterChart"
             android:exported="false" />
         <activity
