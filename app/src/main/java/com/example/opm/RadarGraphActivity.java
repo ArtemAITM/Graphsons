@@ -160,7 +160,7 @@ public class RadarGraphActivity extends AppCompatActivity {
     }
     private void ShowInfo(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Информация о проекте");
+        builder.setTitle("Информация о режиме");
         LayoutInflater inflater = LayoutInflater.from(this);
         View dialogView = inflater.inflate(R.layout.info_radar, null);
         builder.setView(dialogView);

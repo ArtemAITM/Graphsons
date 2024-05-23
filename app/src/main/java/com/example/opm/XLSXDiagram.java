@@ -69,9 +69,9 @@ public class XLSXDiagram extends AppCompatActivity {
             String coord0 = binding.editText2.getText().toString();
             String coord1 = binding.editText3.getText().toString();
             if (coord1.length() == 2 && coord0.length() == 2) {
-                NumberSheet = Integer.parseInt(sheet);
-                X0 = coord0.charAt(0) - 65;
-                X1 = coord1.charAt(0) - 65;
+                NumberSheet = Integer.parseInt(sheet) - 1;
+                X0 = coord0.charAt(0) - 66;
+                X1 = coord1.charAt(0) - 66;
                 Y0 = Integer.parseInt(coord0.substring(1));
                 Y1 = Integer.parseInt(coord1.substring(1));
             }

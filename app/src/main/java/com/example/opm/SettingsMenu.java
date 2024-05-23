@@ -105,12 +105,11 @@ public class SettingsMenu {
                 "graph_screenshot.png",
                 null
         ));
-        String text = "Изображение от одного из наших продуктов - присоединяйся к нам: ";
-        String link = "https://graphsons.webflow.io/";
+        String text = "Изображение из приложения Graphsons - попробуй и ты";
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("image/png");
         shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, text + link);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, text);
         context.startActivity(Intent.createChooser(shareIntent, "Поделиться графиком"));
     }
 }

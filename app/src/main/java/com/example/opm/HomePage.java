@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +13,6 @@ import com.example.opm.databinding.ActivityHomePageBinding;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -26,8 +21,6 @@ import java.util.TimeZone;
 public class HomePage extends AppCompatActivity {
     private DatabaseReference visitsRef;
     private ActivityHomePageBinding binding;
-    private static final String PHONE_NUMBER = "+79939542812";
-    private static final String WK = "https://vk.com/artemamitk";
     private static final String TG = "https://t.me/ArtemItCod";
 
     @Override
@@ -57,14 +50,8 @@ public class HomePage extends AppCompatActivity {
         binding.MenuButton6.setOnClickListener(v -> {
             startActivity(new Intent(this, BubbleCharts.class));
         });
-        binding.phone.setOnClickListener(v -> {
-            makeCall();
-        });
-        binding.wk.setOnClickListener(v -> {
-            openSite(WK);
-        });
         binding.tg.setOnClickListener(v -> {
-            openSite(TG);
+            openSite();
         });
         binding.info.setOnClickListener(v -> {
             ShowInfo();
@@ -73,14 +60,9 @@ public class HomePage extends AppCompatActivity {
 
 
 
-    private void openSite(String url) {
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+    private void openSite() {
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(HomePage.TG));
         startActivity(webIntent);
-    }
-    private void makeCall() {
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse("tel:" + PHONE_NUMBER));
-        startActivity(callIntent);
     }
     private void addVisit() { //добавляет время входа в приложение в Firebase
         Date date = new Date();
