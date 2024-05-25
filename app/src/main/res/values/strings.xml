@@ -2,13 +2,13 @@
     <string name="app_name">OMS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="less"><![CDATA[ < ]]></string>
-    <string name="more"><![CDATA[ > ]]></string>
+    <string name="less"> <![CDATA[<]]> </string>
+    <string name="more"> <![CDATA[>]]> </string>
     <string name="abs">|a|</string>
     <string name="sqrt"> √ </string>
-    <string name="lessSame"> ≤ </string>
+    <string name="lessSame"><b> ≤ </b></string>
     <string name="share_image">Share Image</string>
-    <string name="moreSame"> ≥ </string>
+    <string name="moreSame"><b> ≥ </b></string>
     <string name="left"><![CDATA[<--]]></string>
     <string name="right"><![CDATA[-->]]></string>
     <string name="enter_your_function">Enter your function</string>
@@ -18,7 +18,9 @@
     <string name="xlsx_xls">Выберите XLSX или XLS файл</string>
     <string name="FirstButton">Построение диаграмм из .xlsx файлов</string>
     <string name="SecondButton">Построение математических функций</string>
-    <string name="ThirdButton">Простые диаграммы</string>
+    <string name="ThirdButton">Построение круговых диаграмм</string>
+    <string name="FourButton">Построение столбчатых диаграмм</string>
+    <string name="FiveButton">Построение Radar графиков</string>
     <string name="add">Add</string>
     <string name="share">Поделиться</string>
     <string name="rint">Печать</string>
@@ -38,4 +40,8 @@
   3. Сохранение графиков - максимально удобная и простая функция, которая позволяет сохранять графики в галерею вашего устройства\n
  Ссылка на инструкцию по пользованию: </string>
     <string name="infoRadar">Вы можете вводить данные вручную, вводя данные в поле ввода через запятую(например: 60, 55, 70) или выбирать xlsx файл в котором есть эти значения и отрисовывать их</string>
+    <string name="xlsx_info_1_1">Данный режим позволяет визуализировать данные из ваших .xlsx файлов.\n Рассмотрим пример использования режима:</string>
+    <string name="xlsx_info_1_2">Возьмем эту таблицу для примера визуализации данных</string>
+    <string name="xlsx_info_1_3">Сначала нажимаем выбрать данные и через менеджер файлов выбираем наш файл.\n Затем в верхнем правом углу в выпадающем окне выбираем номер листа, и зону отрисовки(например от A1 до B4)\n</string>
+    <string name="xlsx_info_1_4">На выход мы получаем отрисованную круговую диаграмму, которую можно:\n 1. Сохранить в галерею\n 2.Отправить график в мессенджер\n 3. Напечатать график\n</string>
 </resources>

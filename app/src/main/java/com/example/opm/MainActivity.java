@@ -1,5 +1,7 @@
 package com.example.opm;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,10 +12,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -45,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         binding.listView.setAdapter(adapter);
 
@@ -63,16 +70,25 @@ public class MainActivity extends AppCompatActivity {
             new SettingsMenu().showMenu(this, v, binding.chart);
         });
         binding.Add.setOnClickListener(v -> {
-            String text = binding.inputEditText.getText().toString();
+            String text = binding.inputEditText1.getText().toString();
             if (!text.isEmpty()){
                 items.add(text);
                 adapter.notifyDataSetChanged();
             }
-            binding.inputEditText.setText("");
+            binding.inputEditText1.setText("");
         });
         binding.drawAll.setOnClickListener(v -> {
-            BuildMathFunction buildMathFunction = new BuildMathFunction(binding.chart);
-            buildMathFunction.plotFunction(items);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    BuildMathFunction buildMathFunction = new BuildMathFunction(binding.chart);
+                    try {
+                        buildMathFunction.plotFunction(items);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }).start();
         });
         binding.listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

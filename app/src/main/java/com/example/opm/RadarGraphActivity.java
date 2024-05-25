@@ -153,7 +153,6 @@ public class RadarGraphActivity extends AppCompatActivity {
         dataSet.setDrawFilled(true);
 
         RadarData data = new RadarData(dataSet);
-
         binding.radarGraphView.setData(data);
         binding.radarGraphView.getDescription().setEnabled(false);
         binding.radarGraphView.invalidate();

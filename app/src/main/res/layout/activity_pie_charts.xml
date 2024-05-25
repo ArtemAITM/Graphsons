@@ -43,6 +43,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Значение"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/key"
         app:layout_constraintTop_toBottomOf="@+id/DrawPie" />

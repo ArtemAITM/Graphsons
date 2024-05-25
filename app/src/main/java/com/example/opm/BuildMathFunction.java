@@ -20,6 +20,8 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.ValidationResult;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class BuildMathFunction {
         this.chart = chart;
     }
 
-    public void plotFunction(List<String> functions) {
+    public void plotFunction(List<String> functions) throws InterruptedException {
         List<ILineDataSet> dataSets = new ArrayList<>();
         LineDataSet x = new LineDataSet(osiX(), null);
         LineDataSet y = new LineDataSet(osiY(), null);
@@ -45,13 +47,23 @@ public class BuildMathFunction {
         y.setColor(Color.BLACK);
         y.setLineWidth(2f);
         dataSets.add(x); dataSets.add(y);
+        int[] i = {0};
         for (String function : functions) {
-            List<Entry> entries = calculateFunctionPoints(function);
-            LineDataSet dataSet = new LineDataSet(entries, function);
-            dataSet.setColor(colors[functions.indexOf(function)]);
-            dataSet.setCircleColor(Color.TRANSPARENT);
-            dataSet.setCircleHoleColor(Color.TRANSPARENT);
-            dataSets.add(dataSet);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    List<Entry> entries = calculateFunctionPoints(function);
+                    LineDataSet dataSet = new LineDataSet(entries, function);
+                    dataSet.setColor(colors[functions.indexOf(function)]);
+                    dataSet.setCircleColor(Color.TRANSPARENT);
+                    dataSet.setCircleHoleColor(Color.TRANSPARENT);
+                    dataSets.add(dataSet);
+                    i[0]++;
+                }
+            }).start();
+        }
+        while (functions.size() != i[0]){
+            Thread.sleep(1);
         }
         LineData lineData = new LineData(dataSets);
         chart.setDrawingCacheEnabled(true);

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="61dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n  Режим предполагает собой построение Radar графиков либо вручную, либо читая файл формата .xlsx.\n  Рассмотрим как пользоватьяся режимом подробней.\n"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700sp"
+                app:srcCompat="@drawable/null_radar" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  Изначально мы можем наблюдать пустой экран, на котором отображены поле для ввода данных, кнопка отрисовки данных, или же выбор из .xlsx файлов.\n  Чтобы ввести данне вручну, нужно вводить дробные числа через запятую.\n Если вы хотите отрисовать данные из .xlsx файла, нужно нажать на кнопку в правом верхнем углу и выбрать нужный файл.\n   После выбора файла рядом с кнопкой откроется меню, в которое нужно будет ввести номер листа и столбец отрисовки.\n"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700sp"
+                app:srcCompat="@drawable/radar_complete" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="После отрисовки данных вы получите наглядную визуализацию введенных данных.\n\n"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

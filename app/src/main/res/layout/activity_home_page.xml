@@ -5,8 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage"
-    android:background="@drawable/graph_stock_image">
+    tools:context=".HomePage">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,121 +16,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
-        android:id="@+id/MenuButton1"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="@string/FirstButton"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <android.widget.Button
-        android:id="@+id/MenuButton2"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="@string/SecondButton"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton1" />
-
-    <android.widget.Button
-        android:id="@+id/MenuButton3"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="Построение круговых диаграмм вручную"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton2" />
-
-    <android.widget.Button
-        android:id="@+id/MenuButton4"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="Построение столбчатых диаграмм вручную"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton3" />
-
-    <android.widget.Button
-        android:id="@+id/MenuButton5"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="Построение Radar графиков"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton4" />
-
-    <android.widget.Button
-        android:id="@+id/MenuButton6"
-        style="@style/some_id"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/rectangle"
-        android:backgroundTint="@null"
-        android:elevation="4dp"
-        android:fontFamily="@font/semi_bold"
-        android:rotation="-4"
-        android:text="Построение Bubble графиков(beta)"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MenuButton5" />
-
     <ImageButton
         android:id="@+id/info"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/info"
+        android:background="#3BFFFFFF"
+        android:src="@drawable/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -145,5 +37,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/tg" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="150dp"
+        android:divider="@null"
+        android:dividerHeight="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

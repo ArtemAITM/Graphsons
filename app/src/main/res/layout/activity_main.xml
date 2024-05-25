@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
-        android:background="#00FFFFFF"
+        android:background="#E8DDDD"
+        android:elevation="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="100dp"
         app:srcCompat="@mipmap/settings" />
 
     <com.github.mikephil.charting.charts.LineChart
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/inputEditText"
+            android:id="@+id/inputEditText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -112,11 +112,13 @@
             android:layout_width="match_parent"
             android:layout_height="109dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Add">
+
+        </ListView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
