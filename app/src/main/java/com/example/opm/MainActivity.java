@@ -1,49 +1,27 @@
 package com.example.opm;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.text.InputType;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.PopupMenu;
 
 import com.example.opm.databinding.ActivityMainBinding;
+import com.github.mikephil.charting.components.YAxis;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<String> items = new ArrayList<>();
-    private ArrayAdapter<String> adapter;
+    static List<String> items = new ArrayList<>();
+    static ArrayAdapter<String> adapter;
     private ActivityMainBinding binding;
     private int VISIBILITY = 0;
 
@@ -53,8 +31,32 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        adapter = new ArrayAdapter<>(this, R.layout.function_item, items);
         binding.listView.setAdapter(adapter);
+        KeyboardView keyboardView = new KeyboardView(this);
+        keyboardView.setEditText(binding.inputEditText1);
+
+        binding.view.setOnKeyboardButtonClickListener(new KeyboardView.OnKeyboardButtonClickListener() {
+            @Override
+            public void onHomeButtonClick() {
+                binding.chart.centerViewTo(0, 0, YAxis.AxisDependency.LEFT);
+            }
+
+            @Override
+            public void onDeleteButtonClick() {
+                String text = binding.inputEditText1.getText().toString();
+                if (!text.isEmpty()) {
+                    binding.inputEditText1.setText(text.substring(0, text.length() - 1));
+                }
+            }
+
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onNormalButtonClick(int buttonId, String buttonText) {
+                String text = binding.inputEditText1.getText().toString();
+                binding.inputEditText1.setText(text + buttonText);
+            }
+        });
 
         binding.openKeyboard.setOnClickListener(v -> {
             if (VISIBILITY == 0) {
@@ -78,18 +80,27 @@ public class MainActivity extends AppCompatActivity {
             binding.inputEditText1.setText("");
         });
         binding.drawAll.setOnClickListener(v -> {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    BuildMathFunction buildMathFunction = new BuildMathFunction(binding.chart);
-                    try {
-                        buildMathFunction.plotFunction(items);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+            new Thread(() -> {
+                BuildMathFunction buildMathFunction =
+                        new BuildMathFunction(binding.chart,
+                                MainActivity.this, MainActivity.this,
+                                items,
+                                adapter, items);
+                try {
+                    runOnUiThread(() -> {
+                        binding.progressBar.setVisibility(View.VISIBLE);
+                    });
+                    buildMathFunction.plotFunction();
+                    runOnUiThread(() -> {
+                        binding.progressBar.setVisibility(View.GONE);
+                    });
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }).start();
         });
+
+
         binding.listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

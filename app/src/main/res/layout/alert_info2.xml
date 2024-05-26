@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="700sp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Этот режим позволяет визулизировать математические функции"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700sp"
+                app:srcCompat="@drawable/math_null" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n Изначально мы можем наблюдать окно для ввода данных, в котором есть специальная клавиатура.\n  Чтобы ввести здесь математическую функцию, которая правильно отобразится, представим, что y = f(x). \n В этом случае нужно вводить ТОЛЬКО f(x).\n Можно ввести разные типы математических функций:\n  1. Обычные функции(например: x + 1, x^2)\n  2. Функции с параметром(например: x*a) \n"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700sp"
+                app:srcCompat="@drawable/loading_null" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n  При нажатии кнопки: &quot;Отрисовать всё&quot; функции в отдельном потоке начинают считать точки, появляется анимация загрузки данных.\n"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700sp"
+                app:srcCompat="@drawable/math_complete" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n  После отрисовки данных анимация загрузки уберется.\n  Специальные функции на клавиатуре:\n 1. home - кнопка, позволяющая вернуть график в координаты 0, 0.\n"
                 android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
