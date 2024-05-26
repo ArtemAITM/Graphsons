@@ -1,10 +1,12 @@
 package com.example.opm;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
@@ -29,12 +31,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         adapter = new ArrayAdapter<>(this, R.layout.function_item, items);
         binding.listView.setAdapter(adapter);
         KeyboardView keyboardView = new KeyboardView(this);
-        keyboardView.setEditText(binding.inputEditText1);
+        keyboardView.setTextView(binding.inputEditText1);
 
         binding.view.setOnKeyboardButtonClickListener(new KeyboardView.OnKeyboardButtonClickListener() {
             @Override

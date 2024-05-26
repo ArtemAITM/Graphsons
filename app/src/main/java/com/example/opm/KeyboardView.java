@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -22,7 +23,7 @@ public class KeyboardView extends LinearLayout {
     private List<Button> buttons;
     private OnKeyboardButtonClickListener listener;
     private String[] buttonTexts;
-    private EditText editText;
+    private TextView textView;
 
     public KeyboardView(Context context) {
         this(context, null);
@@ -51,8 +52,8 @@ public class KeyboardView extends LinearLayout {
         createKeyboard();
     }
 
-    public void setEditText(EditText editText) {
-        this.editText = editText;
+    public void setTextView(TextView textView) {
+        this.textView = textView;
     }
 
     private void createKeyboard() {
@@ -107,8 +108,8 @@ public class KeyboardView extends LinearLayout {
                 listener.onDeleteButtonClick();
             }
         } else {
-            if (editText != null) {
-                editText.append(buttonText);
+            if (textView != null) {
+                textView.append(buttonText);
             }
             if (listener != null) {
                 listener.onNormalButtonClick(buttonId, buttonText);

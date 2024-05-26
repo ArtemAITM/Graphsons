@@ -49,7 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:exported="false" />
         <activity android:name=".BarCharts"
             android:exported="false"/>
